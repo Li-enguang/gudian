@@ -50,6 +50,9 @@ CREATE TABLE `student` (
   `jibengong1` INT(32) NOT NULL DEFAULT 0 COMMENT '基本功练习1',
   `jibengong2` INT(32) NOT NULL DEFAULT 0 COMMENT '基本功练习2',
   `jibengong3` INT(32) NOT NULL DEFAULT 0 COMMENT '基本功练习3',
+  `poly1` INT(32) NOT NULL DEFAULT 0 COMMENT 'poly1',
+  `poly2` INT(32) NOT NULL DEFAULT 0 COMMENT 'poly2',
+  `poly3` INT(32) NOT NULL DEFAULT 0 COMMENT 'poly3',
   ''
   `score` INT(32) NOT NULL COMMENT '总分',
   PRIMARY KEY (`id`) USING BTREE,
