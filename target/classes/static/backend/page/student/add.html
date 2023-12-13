@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="../../plugins/element-ui/index.css"/>
+    <link rel="stylesheet" href="../../styles/common.css"/>
+    <link rel="stylesheet" href="../../styles/page.css"/>
+</head>
+<body>
+<div class="addBrand-container" id="member-add-app">
+    <div class="container">
+        <el-form
+                ref="ruleForm"
+                :model="ruleForm"
+                :rules="rules"
+                :inline="false"
+                label-width="180px"
+                class="demo-ruleForm"
+        >
+            <el-form-item label="学生姓名:" prop="name">
+                <el-input v-model="ruleForm.name" placeholder="请输入学生姓名" maxlength="20"/>
+            </el-form-item>
+
+            <el-form-item label="代课教师:" prop="createUser">
+                <el-input v-model="ruleForm.createUser" placeholder="请输入学生的代课教师" maxlength="20"/>
+            </el-form-item>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="18条:">
+                        <el-input v-model="ruleForm.shibatiao1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.shibatiao2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.shibatiao3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="Jazz10条:">
+                        <el-input v-model="ruleForm.jazz1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.jazz2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.jazz3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="Bebe15种:">
+                        <el-input v-model="ruleForm.bebeshiwu1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.bebeshiwu2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.bebeshiwu3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="Bebe手脚双击:">
+                        <el-input v-model="ruleForm.bebeshoujiao1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.bebeshoujiao2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.bebeshoujiao3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="Mark声音练习:">
+                        <el-input v-model="ruleForm.mark1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.mark2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.mark3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="♩=60:">
+                        <el-input v-model="ruleForm.liushi1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.liushi2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.liushi3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="GhostNote:">
+                        <el-input v-model="ruleForm.ghostnote1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.ghostnote2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.ghostnote3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="鼓垫468:">
+                        <el-input v-model="ruleForm.gudian1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.gudian2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.gudian3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="基本功练习:">
+                        <el-input v-model="ruleForm.jibengong1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.jibengong2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.jibengong3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="5">
+                    <el-form-item label="Poly Accent Pad:">
+                        <el-input v-model="ruleForm.poly1" placeholder="请输入钻石数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.poly2" placeholder="请输入星星数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="5">
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.poly3" placeholder="请输入爱心数" maxlength="10"/>
+                    </el-form-item>
+                </el-col>
+            </el-row>
+
+            <el-form-item label="性别:" prop="sex">
+                <el-radio-group v-model="ruleForm.sex">
+                    <el-radio label="男"></el-radio>
+                    <el-radio label="女"></el-radio>
+                </el-radio-group>
+            </el-form-item>
+
+            <div class="subBox address">
+                <el-form-item>
+                    <el-button @click="goBack()">
+                        取消
+                    </el-button>
+                    <el-button
+                            type="primary"
+                            @click="submitForm('ruleForm', false)"
+                    >
+                        保存
+                    </el-button>
+                    <el-button
+                            v-if="actionType == 'add'"
+                            type="primary"
+                            class="continue"
+                            @click="submitForm('ruleForm', true)"
+                    >
+                        保存并继续添加
+                    </el-button>
+                </el-form-item>
+            </div>
+        </el-form>
+    </div>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="../../plugins/vue/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../../plugins/element-ui/index.js"></script>
+<!-- 引入axios -->
+<script src="../../plugins/axios/axios.min.js"></script>
+<script src="../../js/request.js"></script>
+<script src="../../api/student.js"></script>
+<script src="../../js/validate.js"></script>
+<script src="../../js/index.js"></script>
+<script>
+    new Vue({
+        el: '#member-add-app',
+        data() {
+            return {
+                id: '',
+                actionType: '',
+                ruleForm: {
+                    'name': '',
+                    'sex': '男',
+                    'shibatiao1': '',
+                    'shibatiao2': '',
+                    'shibatiao3': '',
+                    'jazz1': '',
+                    'jazz2': '',
+                    'jazz3': '',
+                    'bebeshiwu1': '',
+                    'bebeshiwu2': '',
+                    'bebeshiwu3': '',
+                    'bebeshoujiao1': '',
+                    'bebeshoujiao2': '',
+                    'bebeshoujiao3': '',
+                    'mark1': '',
+                    'mark2': '',
+                    'mark3': '',
+                    'liushi1': '',
+                    'liushi2': '',
+                    'liushi3': '',
+                    'ghostnote1': '',
+                    'ghostnote2': '',
+                    'ghostnote3': '',
+                    'gudian1': '',
+                    'gudian2': '',
+                    'gudian3': '',
+                    'jibengong1': '',
+                    'jibengong2': '',
+                    'jibengong3': '',
+                }
+            }
+        },
+        computed: {
+            rules() {
+                return {
+                    //姓名
+                    name: [{required: true, 'validator': checkName, 'trigger': 'blur'}],
+                    createUser: [{required: true, 'validator': checkName, 'trigger': 'blur'}],
+                }
+            }
+        },
+        created() {
+            this.id = requestUrlParam('id')
+            this.actionType = this.id ? 'edit' : 'add'
+            if (this.id) {
+                this.init()
+            }
+        },
+        mounted() {
+        },
+        methods: {
+            async init() {
+                queryStudentById(this.id).then(res => {
+                    console.log(res)
+                    if (String(res.code) === '1') {
+                        console.log(res.data)
+                        this.ruleForm = res.data
+                        this.ruleForm.sex = res.data.sex === '0' ? '女' : '男'
+                        // this.ruleForm.password = ''
+                    } else {
+                        this.$message.error(res.msg || '操作失败')
+                    }
+                })
+            },
+            submitForm(formName, st) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        if (this.actionType === 'add') {
+                            const params = {
+                                ...this.ruleForm,
+                                sex: this.ruleForm.sex === '女' ? '0' : '1'
+                            }
+                            addStudent(params).then(res => {
+                                if (res.code === 1) {
+                                    this.$message.success('学生添加成功！')
+                                    if (!st) {
+                                        this.goBack()
+                                    } else {
+                                        this.ruleForm = {
+                                          'name': '',
+                                          'sex': '男'
+                                        }
+                                    }
+                                } else {
+                                    this.$message.error(res.msg || '操作失败')
+                                }
+                            }).catch(err => {
+                                this.$message.error('请求出错了：' + err)
+                            })
+                        } else {
+                            const params = {
+                                ...this.ruleForm,
+                                sex: this.ruleForm.sex === '女' ? '0' : '1'
+                            }
+                            editStudent(params).then(res => {
+                                if (res.code === 1) {
+                                    this.$message.success('学生信息修改成功！')
+                                    this.goBack()
+                                } else {
+                                    this.$message.error(res.msg || '操作失败')
+                                }
+                            }).catch(err => {
+                                this.$message.error('请求出错了：' + err)
+                            })
+                        }
+                    } else {
+                        console.log('error submit!!')
+                        return false
+                    }
+                })
+            },
+            goBack() {
+                window.parent.menuHandle({
+                    id: '3',
+                    url: '/backend/page/student/list.html',
+                    name: '技巧之星排行榜'
+                }, false)
+            }
+        }
+    })
+</script>
+</body>
+</html>

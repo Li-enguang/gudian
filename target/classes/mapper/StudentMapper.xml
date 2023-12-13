@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lieng.reiji.mapper.StudentMapper">
+
+    <resultMap id="BaseResultMap" type="com.lieng.reiji.pojo.Student">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="sex" column="sex" jdbcType="VARCHAR"/>
+            <result property="createUser" column="create_user" jdbcType="VARCHAR"/>
+            <result property="updateUser" column="update_user" jdbcType="VARCHAR"/>
+            <result property="shibatiao1" column="shibatiao1" jdbcType="INTEGER"/>
+            <result property="shibatiao2" column="shibatiao2" jdbcType="INTEGER"/>
+            <result property="shibatiao3" column="shibatiao3" jdbcType="INTEGER"/>
+            <result property="jazz1" column="jazz1" jdbcType="INTEGER"/>
+            <result property="jazz2" column="jazz2" jdbcType="INTEGER"/>
+            <result property="jazz3" column="jazz3" jdbcType="INTEGER"/>
+            <result property="bebeshiwu1" column="bebeshiwu1" jdbcType="INTEGER"/>
+            <result property="bebeshiwu2" column="bebeshiwu2" jdbcType="INTEGER"/>
+            <result property="bebeshiwu3" column="bebeshiwu3" jdbcType="INTEGER"/>
+            <result property="bebeshoujiao1" column="bebeshoujiao1" jdbcType="INTEGER"/>
+            <result property="bebeshoujiao2" column="bebeshoujiao2" jdbcType="INTEGER"/>
+            <result property="bebeshoujiao3" column="bebeshoujiao3" jdbcType="INTEGER"/>
+            <result property="mark1" column="mark1" jdbcType="INTEGER"/>
+            <result property="mark2" column="mark2" jdbcType="INTEGER"/>
+            <result property="mark3" column="mark3" jdbcType="INTEGER"/>
+            <result property="liushi1" column="liushi1" jdbcType="INTEGER"/>
+            <result property="liushi2" column="liushi2" jdbcType="INTEGER"/>
+            <result property="liushi3" column="liushi3" jdbcType="INTEGER"/>
+            <result property="ghostnote1" column="ghostnote1" jdbcType="INTEGER"/>
+            <result property="ghostnote2" column="ghostnote2" jdbcType="INTEGER"/>
+            <result property="ghostnote3" column="ghostnote3" jdbcType="INTEGER"/>
+            <result property="gudian1" column="gudian1" jdbcType="INTEGER"/>
+            <result property="gudian2" column="gudian2" jdbcType="INTEGER"/>
+            <result property="gudian3" column="gudian3" jdbcType="INTEGER"/>
+            <result property="jibengong1" column="jibengong1" jdbcType="INTEGER"/>
+            <result property="jibengong2" column="jibengong2" jdbcType="INTEGER"/>
+            <result property="jibengong3" column="jibengong3" jdbcType="INTEGER"/>
+            <result property="score" column="score" jdbcType="INTEGER"/>
+            <result property="poly1" column="poly1" jdbcType="INTEGER"/>
+            <result property="poly2" column="poly2" jdbcType="INTEGER"/>
+            <result property="poly3" column="poly3" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,sex,
+        create_user,update_user,shibatiao1,
+        shibatiao2,shibatiao3,jazz1,
+        jazz2,jazz3,bebeshiwu1,
+        bebeshiwu2,bebeshiwu3,bebeshoujiao1,
+        bebeshoujiao2,bebeshoujiao3,mark1,
+        mark2,mark3,liushi1,
+        liushi2,liushi3,ghostnote1,
+        ghostnote2,ghostnote3,gudian1,
+        gudian2,gudian3,jibengong1,
+        jibengong2,jibengong3,score,
+        poly1,poly2,poly3
+    </sql>
+</mapper>

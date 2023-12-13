@@ -1,0 +1,57 @@
+DROP TABLE IF EXISTS `employee`;
+CREATE TABLE `employee` (
+  `id` BIGINT(20) AUTO_INCREMENT NOT NULL COMMENT '主键',
+  `name` VARCHAR(32) COLLATE utf8_bin NOT NULL COMMENT '姓名',
+  `username` VARCHAR(32) COLLATE utf8_bin NOT NULL COMMENT '用户名',
+  `password` VARCHAR(64) COLLATE utf8_bin NOT NULL COMMENT '密码',
+  `phone` VARCHAR(11) COLLATE utf8_bin NOT NULL COMMENT '手机号',
+  `sex` VARCHAR(2) COLLATE utf8_bin NOT NULL COMMENT '性别',
+  `age` INT(5) NOT NULL COMMENT '年龄',
+  `status` INT(11) NOT NULL DEFAULT '1' COMMENT '状态 0:禁用，1:正常',
+  `create_user` VARCHAR(32) NOT NULL COMMENT '创建人',
+  `update_user` VARCHAR(32) NOT NULL COMMENT '修改人',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `idx_username` (`username`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='员工信息';
+
+INSERT INTO `employee` VALUES ('1', '管理员', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '13812312312', '1', 25, '1','1', '1');
+
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE `student` (
+  `id` BIGINT(20) AUTO_INCREMENT NOT NULL COMMENT '主键',
+  `name` VARCHAR(32) COLLATE utf8_bin NOT NULL COMMENT '姓名',
+  `sex` VARCHAR(2) COLLATE utf8_bin NOT NULL COMMENT '性别',
+  `create_user` VARCHAR(32) NOT NULL COMMENT '创建人',
+  `update_user` VARCHAR(32) NOT NULL COMMENT '修改人',
+  `shibatiao1` INT(32) NOT NULL DEFAULT 0 COMMENT '18条1',
+  `shibatiao2` INT(32) NOT NULL DEFAULT 0 COMMENT '18条2',
+  `shibatiao3` INT(32) NOT NULL DEFAULT 0 COMMENT '18条3',
+  `jazz1` INT(32) NOT NULL DEFAULT 0 COMMENT 'Jazz10条1',
+  `jazz2` INT(32) NOT NULL DEFAULT 0 COMMENT 'Jazz10条2',
+  `jazz3` INT(32) NOT NULL DEFAULT 0 COMMENT 'Jazz10条3',
+  `bebeshiwu1` INT(32) NOT NULL DEFAULT 0 COMMENT 'Bebe15种1',
+  `bebeshiwu2` INT(32) NOT NULL DEFAULT 0 COMMENT 'Bebe15种2',
+  `bebeshiwu3` INT(32) NOT NULL DEFAULT 0 COMMENT 'Bebe15种3',
+  `bebeshoujiao1` INT(32) NOT NULL DEFAULT 0 COMMENT 'Bebe手脚双击1',
+  `bebeshoujiao2` INT(32) NOT NULL DEFAULT 0 COMMENT 'Bebe手脚双击2',
+  `bebeshoujiao3` INT(32) NOT NULL DEFAULT 0 COMMENT 'Bebe手脚双击3',
+  `mark1` INT(32) NOT NULL DEFAULT 0 COMMENT 'Mark声音练习1',
+  `mark2` INT(32) NOT NULL DEFAULT 0 COMMENT 'Mark声音练习2',
+  `mark3` INT(32) NOT NULL DEFAULT 0 COMMENT 'Mark声音练习3',
+  `liushi1` INT(32) NOT NULL DEFAULT 0 COMMENT '601',
+  `liushi2` INT(32) NOT NULL DEFAULT 0 COMMENT '602',
+  `liushi3` INT(32) NOT NULL DEFAULT 0 COMMENT '603',
+  `ghostnote1` INT(32) NOT NULL DEFAULT 0 COMMENT 'GhostNote1',
+  `ghostnote2` INT(32) NOT NULL DEFAULT 0 COMMENT 'GhostNote2',
+  `ghostnote3` INT(32) NOT NULL DEFAULT 0 COMMENT 'GhostNote3',
+  `gudian1` INT(32) NOT NULL DEFAULT 0 COMMENT '鼓垫4681',
+  `gudian2` INT(32) NOT NULL DEFAULT 0 COMMENT '鼓垫4682',
+  `gudian3` INT(32) NOT NULL DEFAULT 0 COMMENT '鼓垫4683',
+  `jibengong1` INT(32) NOT NULL DEFAULT 0 COMMENT '基本功练习1',
+  `jibengong2` INT(32) NOT NULL DEFAULT 0 COMMENT '基本功练习2',
+  `jibengong3` INT(32) NOT NULL DEFAULT 0 COMMENT '基本功练习3',
+  ''
+  `score` INT(32) NOT NULL COMMENT '总分',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `idx_name` (`name`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='学生信息';
