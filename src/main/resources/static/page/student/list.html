@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="../../plugins/element-ui/index.css"/>
+    <link rel="stylesheet" href="../../styles/common.css"/>
+    <link rel="stylesheet" href="../../styles/page.css"/>
+    <style>
+        #member-app .notAdmin::after {
+            border: 0 !important;
+
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard-container" id="member-app">
+    <div class="container">
+        <div class="tableBar">
+            <el-input
+                    v-model="input"
+                    placeholder="请输入学生姓名"
+                    style="width: 250px"
+                    clearable
+                    @keyup.enter.native="handleQuery"
+            >
+                <i
+                        slot="prefix"
+                        class="el-input__icon el-icon-search"
+                        style="cursor: pointer"
+                        @click="handleQuery"
+                ></i>
+            </el-input>
+            <el-button
+                    type="primary"
+                    @click="addStudentHandle('add')"
+            >
+                添加学生
+            </el-button>
+        </div>
+        <el-table
+                :data="tableData"
+                stripe
+                class="tableBox"
+        >
+            <el-table-column
+                    prop="index"
+                    label="排名"
+                    width="90"
+            >
+                <template slot-scope="scope">
+                    <span v-text="getIndex(scope.$index)"> </span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="学生姓名"
+            >
+            </el-table-column>
+            <el-table-column
+                    prop="shibatiao1,shibatiao2,shibatiao3"
+                    label="18条"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.shibatiao1!=0">💎{{scope.row.shibatiao1}}</span>
+                    <span v-if="scope.row.shibatiao2!=0">⭐{{scope.row.shibatiao2}}</span>
+                    <span v-if="scope.row.shibatiao3!=0">💗{{scope.row.shibatiao3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="jazz1,jazz2,jazz3"
+                    label="Jazz10条"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.jazz1!=0">💎{{scope.row.jazz1}}</span>
+                    <span v-if="scope.row.jazz2!=0">⭐{{scope.row.jazz2}}</span>
+                    <span v-if="scope.row.jazz3!=0">💗{{scope.row.jazz3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="bebeshiwu1,bebeshiwu2,bebeshiwu3"
+                    label="Bebe15种"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.bebeshiwu1!=0">💎{{scope.row.bebeshiwu1}}</span>
+                    <span v-if="scope.row.bebeshiwu2!=0">⭐{{scope.row.bebeshiwu2}}</span>
+                    <span v-if="scope.row.bebeshiwu3!=0">💗{{scope.row.bebeshiwu3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="bebeshoujiao1,bebeshoujiao2,bebeshoujiao3"
+                    label="Bebe手脚双击"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.bebeshoujiao1!=0">💎{{scope.row.bebeshoujiao1}}</span>
+                    <span v-if="scope.row.bebeshoujiao2!=0">⭐{{scope.row.bebeshoujiao2}}</span>
+                    <span v-if="scope.row.bebeshoujiao3!=0">💗{{scope.row.bebeshoujiao3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="mark1,mark2,mark3"
+                    label="Mark声音练习"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.mark1!=0">💎{{scope.row.mark1}}</span>
+                    <span v-if="scope.row.mark2!=0">⭐{{scope.row.mark2}}</span>
+                    <span v-if="scope.row.mark3!=0">💗{{scope.row.mark3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="liushi1,liushi2,liushi3"
+                    label="♩=60"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.liushi1!=0">💎{{scope.row.liushi1}}</span>
+                    <span v-if="scope.row.liushi2!=0">⭐{{scope.row.liushi2}}</span>
+                    <span v-if="scope.row.liushi3!=0">💗{{scope.row.liushi3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="ghostnote1,ghostnote2,ghostnote3"
+                    label="GhostNote"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.ghostnote1!=0">💎{{scope.row.ghostnote1}}</span>
+                    <span v-if="scope.row.ghostnote2!=0">⭐{{scope.row.ghostnote2}}</span>
+                    <span v-if="scope.row.ghostnote3!=0">💗{{scope.row.ghostnote3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="gudian1,gudian2,gudian3"
+                    label="鼓垫468"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.gudian1!=0">💎{{scope.row.gudian1}}</span>
+                    <span v-if="scope.row.gudian2!=0">⭐{{scope.row.gudian2}}</span>
+                    <span v-if="scope.row.gudian3!=0">💗{{scope.row.gudian3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="jibengong1,jibengong2,jibengong3"
+                    label="基本功练习"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.jibengong1!=0">💎{{scope.row.jibengong1}}</span>
+                    <span v-if="scope.row.jibengong2!=0">⭐{{scope.row.jibengong2}}</span>
+                    <span v-if="scope.row.jibengong3!=0">💗{{scope.row.jibengong3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="poly1,poly2,poly3"
+                    label="PolyAccentPad"
+            >
+                <template slot-scope="scope">
+                    <span v-if="scope.row.poly1!=0">💎{{scope.row.poly1}}</span>
+                    <span v-if="scope.row.poly2!=0">⭐{{scope.row.poly2}}</span>
+                    <span v-if="scope.row.poly3!=0">💗{{scope.row.poly3}}</span>
+                </template>
+            </el-table-column>
+            <el-table-column
+                    prop="score"
+                    label="总分"
+                    width="80"
+            ></el-table-column>
+            <el-table-column
+                    prop="createUser"
+                    label="代课教师"
+                    width="80"
+            ></el-table-column>
+            <el-table-column
+                    label="操作"
+                    width="100"
+                    align="center"
+            >
+                <template slot-scope="scope">
+                    <el-button
+                            type="text"
+                            size="small"
+                            class="blueBug"
+                            @click="addStudentHandle(scope.row.id)"
+                            :class="{notAdmin:user !== 'admin'}"
+                    >
+                        编辑
+                    </el-button>
+                    <el-button
+                            type="text"
+                            size="small"
+                            class="delBut non"
+                            @click="statusHandle(scope.row)"
+                            v-if="user === 'admin'"
+                    >
+                        删除
+                    </el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+        <el-pagination
+                class="pageList"
+                :page-sizes="[10, 20, 30, 40]"
+                :page-size="pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="counts"
+                :current-page.sync="page"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+        ></el-pagination>
+    </div>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="../../plugins/vue/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="../../plugins/element-ui/index.js"></script>
+<!-- 引入axios -->
+<script src="../../plugins/axios/axios.min.js"></script>
+<script src="../../js/request.js"></script>
+<script src="../../api/student.js"></script>
+<script>
+    new Vue({
+        el: '#member-app',
+        data() {
+            return {
+                input: '',
+                counts: 0,
+                page: 1,
+                pageSize: 40,
+                tableData: [],
+                id: '',
+                status: '',
+            }
+        },
+        computed: {},
+        created() {
+            this.init()
+            this.user = JSON.parse(localStorage.getItem('userInfo')).username
+        },
+        mounted() {
+        },
+        methods: {
+            async init() {
+                const params = {
+                    page: this.page,
+                    pageSize: this.pageSize,
+                    name: this.input ? this.input : undefined
+                }
+                await getStudentList(params).then(res => {
+                    if (String(res.code) === '1') {
+                        this.tableData = res.data.records || []
+                        this.counts = res.data.total
+                    }
+                }).catch(err => {
+                    this.$message.error('请求出错了：' + err)
+                })
+            },
+            handleQuery() {
+                this.page = 1;
+                this.init();
+            },
+            // 添加
+            addStudentHandle(st) {
+                if (st === 'add') {
+                    window.parent.menuHandle({
+                        id: '2',
+                        url: '/page/student/add.html',
+                        name: '添加学生'
+                    }, true)
+                } else {
+                    window.parent.menuHandle({
+                        id: '2',
+                        url: '/page/student/add.html?id=' + st,
+                        name: '修改学生'
+                    }, true)
+                }
+            },
+            //状态修改
+            statusHandle(row) {
+                this.id = row.id
+                this.$confirm('确认删除该学生?', '提示', {
+                    'confirmButtonText': '确定',
+                    'cancelButtonText': '取消',
+                    'type': 'warning'
+                }).then(() => {
+                    deleteStudent(this.id).then(res => {
+                        console.log('deleteStudent', res)
+                        if (String(res.code) === '1') {
+                            this.$message.success('删除学生成功！')
+                            this.handleQuery()
+                        }
+                    }).catch(err => {
+                        this.$message.error('请求出错了：' + err)
+                    })
+                })
+            },
+            handleSizeChange(val) {
+                this.pageSize = val
+                this.init()
+            },
+            handleCurrentChange(val) {
+                this.page = val
+                this.init()
+            },
+            getIndex($index) {
+                return (this.page - 1) * this.pageSize + $index + 1
+            },
+        }
+    })
+</script>
+</body>
+</html>
